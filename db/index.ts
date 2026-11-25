@@ -3,8 +3,10 @@ import { Pool } from "pg";
 
 const databaseUrl = process.env.DATABASE_URL;
 
+// Don't throw at import time: `next build` loads route modules while collecting
+// page data, and a missing variable there would fail the whole build.
 if (!databaseUrl) {
-  throw new Error("DATABASE_URL is required");
+  console.warn("DATABASE_URL is not set; database queries will fail until it is configured.");
 }
 
 const globalForDb = globalThis as typeof globalThis & {
