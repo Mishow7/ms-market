@@ -4,8 +4,8 @@ import { Pool } from "pg";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { randomBytes, scryptSync } from "crypto";
 import { eq, sql } from "drizzle-orm";
-import * as s from "../src/db/schema";
-import { baseSections, defaultThemeConfig } from "../src/lib/themes";
+import * as s from "../db/schema";
+import { baseSections, defaultThemeConfig } from "../lib/themes";
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const db = drizzle(pool);
